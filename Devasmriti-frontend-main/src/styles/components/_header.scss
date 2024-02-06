@@ -1,0 +1,292 @@
+@import url('../objectivity/objectivity-font.css');
+
+$ns: '.app-component-header';
+
+#{$ns} {
+    &__wrapper{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__logo{
+        img{
+            width: 200px;
+        }
+    }
+    &__menu{
+        &__list{
+            display: flex;
+            align-items: center;
+            padding:0;
+            margin:0;
+            list-style: none;
+            &item{
+                &:not(:last-child){
+                    margin-right: 15px;
+                }
+            }
+        }
+    }
+}
+
+#HeaderButton ul li .profile-btn:hover,
+#HeaderButton ul li .cart-btn,
+#HeaderButton ul li .wallet-btn{
+    box-shadow: unset !important;
+    background-color: unset !important;
+}
+#HeaderButton ul li .profile-btn .profile-info .profile-btn-user{
+    margin-right: 10px;
+}
+
+.header-menu a:-webkit-any-link {
+    color: #313131 !important;
+}
+.header-menu .MuiPaper-elevation8{
+    border-radius: 15px;
+    background: #FFF;
+    box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.15);
+}
+.header-menu .MuiMenu-list{
+    padding: 10px 30px 10px 10px;
+}
+.header-menu .menu-one img,
+.header-menu .menu-two img,
+.header-menu .menu-three img{
+    width: 18px !important;
+    margin-right: 10px;
+}
+.app-new-clients,
+.app-new-clients-listing{
+    margin: 0px !important;
+}
+.app-clients-content p{
+    color: #252525;
+    text-align: center;
+    font-style: normal;
+    font-weight: 500;
+    font-size:12px;
+    margin: 0px;
+    line-height: 22px;
+}
+.app-clients-content p span{
+    font-weight: 700;
+}
+
+.app-clients-listing {
+    background: #FEE6E1;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.05);
+    padding: 10px 0px;
+}
+
+// .app-new-clients-listing .marquee {
+//     height:45px;
+//     width: 100%;
+//     overflow: hidden;
+//     box-sizing: border-box;
+//     position: relative;
+// }
+
+// .app-new-clients-listing .marquee-inner {
+//     display: flex;
+//     width: 200%;
+//     height: 100%;
+//     position: absolute;
+//     animation: marquee 30s linear infinite;
+//     justify-content: space-between;
+//     align-items: center;
+// }
+
+// .app-new-clients-listing .marquee-inner:hover {
+//     animation-play-state: paused;
+// }
+
+// @keyframes marquee {
+//     0% {
+//         left: 0;
+//     }
+
+//     100% {
+//         left: -100%;
+//     }
+// }
+
+// .app-new-clients-listing . {
+//     margin: 0;
+//     width: 100%;
+//     display: flex;
+//     align-items: center;
+// }
+
+// .app-new-clients-listing .marquee-item {
+//     width: 25%;
+//     height: auto;
+//     object-fit: contain;
+//     display: inline-block;
+//     margin: 0;
+//     text-align: center;
+//     opacity: .8;
+//     float: left;
+//     transition: all .2s ease-out;
+// }
+
+// .app-new-clients-listing .marquee-item img {
+//     width: 130px;
+//     height: 50px;
+//     object-fit: contain;
+// }
+
+// .app-new-clients-listing .marquee-item:hover {
+//     opacity: 1;
+//     filter: unset;
+// }
+// .marquee .marquee-inner .marquee-content .marquee-item p{
+//     position: relative;
+// }
+.app-new-clients-listing .swiper-slide{
+    width: 100% !important;
+}
+.cart-btn{
+    display: flex;
+}
+.search-btn img{
+    background-color: #FFF;
+    padding: 10px;
+    border-radius: 50%;
+    border: 0.6px solid rgba(255, 91, 0, 0.30);
+}
+.wallet-btn-text{
+    color: #FF5B00;
+    leading-trim: both;
+    text-edge: cap;
+    font-size: 16px;
+    font-family: 'Objectivity';
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-left: 8px;
+}
+.cart-btn-text{
+    color: #FF5B00;
+    leading-trim: both;
+    text-edge: cap;
+    font-size: 10px;
+    font-family: 'Objectivity';
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-left: 5px;
+    background-color: #fff;
+    padding: 5px 12px 3px 12px;
+    border-radius:20px;
+    border: 0.6px solid rgba(255, 91, 0, 0.30);
+    margin-left: 8px;
+}
+.profile-name{
+    color: #686868;
+    leading-trim: both;
+    text-edge: cap;
+    font-family: 'Objectivity';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 0px 08px;
+    text-transform: capitalize !important;
+}
+.profile-info{
+    display: flex;
+    align-items:center ;
+
+}
+.profile-info .MuiPaper-rounded {
+    border-radius: 10px !important;
+}
+.profile-info .MuiMenu-list{
+    padding: 20px 30px !important;
+}
+.profile-info .MuiMenu-list li{
+    position: relative;
+    color: #686868;
+    text-align: center;
+    font-family: 'Objectivity';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25px;
+    margin-bottom: 10px;
+}
+.profile-info .MuiMenu-list li:hover{
+    background-color: unset !important;
+}
+.profile-info .MuiMenu-list .menu-one::before{
+    content: '';
+    position: absolute;
+    background-image: url('../../images/profile-icon.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    left: -10px;
+    top: 05px;
+}
+.profile-info .MuiMenu-list .menu-two::before{
+    content: '';
+    position: absolute;
+    background-image: url('../../images/booked-seva-icon.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    left: -10px;
+    top: 05px;
+}
+.profile-info .MuiMenu-list .menu-three{
+    color: #F22;
+}
+.profile-info .MuiMenu-list .menu-three::before{
+    content: '';
+    position: absolute;
+    background-image: url('../../images/log-outicon.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    left: -10px;
+    top: 05px;
+}
+.login-btn{
+    border: unset !important;
+    color: #FF5B00 !important;
+    leading-trim: both !important;
+    text-edge: cap !important;
+    font-family: 'Objectivity' !important;
+    font-size: 16px !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    line-height: normal;
+    text-transform: unset !important;
+}
+@media (min-width:320px) and (max-width:767px) {
+    #search{
+        display: none;
+    }
+    #wallat{
+        display: none;
+    }
+    // #wallat-item{
+    //     display: none;
+    // }
+    .app-component-header__logo img{
+        width: 120px;
+    }
+    .app-component-header__menu__listitem:not(:last-child){
+        margin-right: 0px;
+    }
+
+    .app-clients-content p{
+        font-size: 12px;
+        margin: 0px 10px;
+    }
+    
+}
