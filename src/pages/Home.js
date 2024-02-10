@@ -48,22 +48,22 @@ function Home({ triggerRefresh1, setTriggerRefresh }) {
     const token = localStorage.getItem("token");
     const { orderStatus } = useCart()
     const [sevaTypeDynamic, setSevaTypeDynamic] = useState([]);
-    const [isMobileView, setIsMobileView] = useState(false);
+    // const [isMobileView, setIsMobileView] = useState(false);
 
 
-    const isMobile = () => window.innerWidth <= 600;
+    // const isMobile = () => window.innerWidth <= 600;
 
-    const handleResize = () => {
-        setIsMobileView(isMobile());
-    };
+    // const handleResize = () => {
+    //     setIsMobileView(isMobile());
+    // };
 
-    useEffect(() => {
-        setIsMobileView(isMobile());
-        window.addEventListener("resize", handleResize);
-        return () => {
-            window.removeEventListener("resize", handleResize);
-        };
-    }, []);
+    // useEffect(() => {
+    //     setIsMobileView(isMobile());
+    //     window.addEventListener("resize", handleResize);
+    //     return () => {
+    //         window.removeEventListener("resize", handleResize);
+    //     };
+    // }, []);
     const Explore = async () => {
         try {
             const { data, status } = await axios.get(`${api}/api/seva_types`, {
@@ -340,7 +340,7 @@ function Home({ triggerRefresh1, setTriggerRefresh }) {
                         </div>
                     </Container>
                 </div>
-                {isMobileView && window.location.pathname === "/" && (
+                {/* {isMobileView && window.location.pathname === "/" && (
     <div className="book-seva-fixed-bottom" style={{position :'fixed',bottom:'5px',left:'25px',width:'100%',zIndex:'1000'}}>
         <Link to='/explore_puja'>
             <Button variant="contained" disableRipple disableElevation className="app-btn app-btn-primary has-icon-end" style={{width:'300px'}}>
@@ -348,7 +348,7 @@ function Home({ triggerRefresh1, setTriggerRefresh }) {
             </Button>
         </Link>
     </div>
-)}
+)} */}
                 <Footer />
             </div>
             <ToastContainer />

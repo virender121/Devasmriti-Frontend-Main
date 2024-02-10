@@ -156,7 +156,7 @@ function Champaign({ triggerRefresh1, setTriggerRefresh }) {
         {productDetails.banner_image_id && (
           <div style={{position:'relative'}}>
         <img src={`${productDetails.banner_image_id.domain}${productDetails.banner_image_id.url}`} alt={productDetails.banner_image_id.name} />
-        <span className="share_icon" onClick={handleOpen}><img src={share_icon} alt ='share' style={{width:'100%',height:'33px',marginTop:'0px'}} /> </span>
+        <span className="share_icon_span" onClick={handleOpen}><img src={share_icon} alt ='share' className="share_icon" style={{width:"80%" ,height:"30px", marginTop:"0"}} /> </span>
         </div>
         
         )}

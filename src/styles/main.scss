@@ -366,7 +366,7 @@ a:-webkit-any-link {
   position: relative;
   margin-top: 130px;
 }
-.share_icon{
+.share_icon_span{
   position: absolute;
     top: 540px;
     left: 10px;
@@ -383,6 +383,7 @@ a:-webkit-any-link {
     border-radius: 50%;
 
 }
+
 
 .durgamata .strip {
     // position: absolute;
@@ -5224,7 +5225,7 @@ input[type="radio"] + label {
   ._3gpv img{
     height: 250px;
   }
-  .share_icon{
+  .share_icon_span{
     position: absolute;
     top: 323px;
     left: 0px;
@@ -5232,13 +5233,14 @@ input[type="radio"] + label {
     z-index: 2;
     background-color: white;
     color: lightgray;
-    height: 45px;
-    width: 45px;
+    height: 35px;
+    width: 35px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius:50%;
   }
+  
   .ananta-padmanabu {
     margin-top: 20px;
   }

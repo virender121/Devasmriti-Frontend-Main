@@ -18,15 +18,21 @@ import LoginDailog from "../LoginDailog";
 import axios from "axios";
 // import MultipleSelectPlaceholder from "./MultipleSelectPlaceholder"
 import MultipleSelectPlaceholder2 from "../MultipleSelectPlaceholder2";
+// import Button from "@material-ui/core/Button";
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
 import api from "../../config/backend";
 
+
 const App = ({ sevas, setTriggerRefresh }) => {
+
+ 
   const token = localStorage.getItem("token");
   // console.log(sevas)
   const section1Ref = useRef(null);
   const section2Ref = useRef(null);
   const section3Ref = useRef(null);
-  const section4Ref = useRef(null);
+  // const section4Ref = useRef(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const user = useAuth();
@@ -45,7 +51,7 @@ const App = ({ sevas, setTriggerRefresh }) => {
   // console.log(eventFaq)
 
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-
+  const [openModel, setOpenModel] = useState(false);
   const [selectedPriceList, setSelectedPriceList] = useState([]);
 
   console.log(selectedPriceList);
@@ -82,7 +88,7 @@ const App = ({ sevas, setTriggerRefresh }) => {
         { ref: section1Ref, name: "section1" },
         { ref: section2Ref, name: "section2" },
         { ref: section3Ref, name: "section3" },
-        { ref: section4Ref, name: "section4" },
+        // { ref: section4Ref, name: "section4" },
       ];
       // const currentScrollPosition = window.scrollY ;
       const currentScrollPosition = window.scrollY;
@@ -197,8 +203,27 @@ const App = ({ sevas, setTriggerRefresh }) => {
 
     }
   };
+ 
 
 
+  const handleOpenModal = () => {
+    setOpenModel(true)
+    console.log("Open Modal");
+    // console.log(seva, "seva choose")
+  };
+  const handleClose = () => {
+    setOpenModel(false);
+  }
+
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+  const handleButtonClick = (seva) => {
+    if (isMobile) {
+      handleOpenModal();
+    } else {
+      handleBookSeva(seva);
+    }
+  };
 
   // Render the handleredirect result wherever it makes sense in your component
   // For example, in the render method or in the JSX where you want to display it
@@ -248,12 +273,12 @@ const App = ({ sevas, setTriggerRefresh }) => {
         >
           Update
         </Button>
-        <Button
-          className={visibleSection === "section4" ? "active" : ""}
-          onClick={() => handleNavClick(section4Ref)}
-        >
-          FAQs
-        </Button>
+          {/* <Button
+            {/* className={visibleSection === "section4" ? "active" : ""}
+            onClick={() => handleNavClick(section4Ref)}
+          > */
+            /* FAQs */
+          /* </Button>  */}
       </nav>
 
       <div ref={section1Ref} data-section="section1" className="section1">
@@ -279,20 +304,42 @@ const App = ({ sevas, setTriggerRefresh }) => {
                       />
                       <div className="champaign-sev-box-content">
                         <h4>{seva.title}</h4>
-                        <h5>{seva.date}</h5>
-                        <div className="choose-seva">
-                          <div className="choose-seva-content multiselect-option">
+                        <h5>{seva.date}</h5> 
+                         {!isMobile ? (
+                          <div className="choose-seva">
+                            <div className="choose-seva-content multiselect-option">
                             <label className="choose-seva-margin">
                               Choose a Seva
                             </label>
-                            {seva.seva_prices && seva.seva_prices.length > 1 && (
-                              <MultipleSelectPlaceholder2
-                                onPriceChange={handlePriceChange}
-                                seva={seva}
-                              />
-                            )}
+                             {seva.seva_prices && seva.seva_prices.length > 1 && (
+                               <MultipleSelectPlaceholder2
+                               onPriceChange={handlePriceChange}
+                               seva={seva}
+                                />
+                               )}
+                            </div>
                           </div>
-                        </div>
+                          ) : (
+                            openModel && (
+                              <div>
+                          
+     {seva.seva_prices && seva.seva_prices.length > 1 && (
+                              <div>
+                                <MultipleSelectPlaceholder2
+                               onPriceChange={handlePriceChange}
+                               seva={seva}
+                              
+                               handleClose={handleClose}
+                               setSevaForDialog={setSevaForDialog}
+                               openDialog={openDialog}
+                                />
+                                
+    </div>
+                    )}
+                    </div>
+                    ))
+                  }
+
                         <p className="price-cost">
                           {" "}
                           Price -{" "}
@@ -328,7 +375,7 @@ const App = ({ sevas, setTriggerRefresh }) => {
                                                     </Button> */}
 
                             <Button
-                              onClick={() => handleBookSeva(seva)}
+                              onClick={() => handleButtonClick(seva)}
                               disableRipple
                               disableElevation
                               className={`bookseva ${seva.is_expaired ? "" : "highlight"
@@ -398,16 +445,16 @@ const App = ({ sevas, setTriggerRefresh }) => {
           )}
         </div>
       </div>
-      <div ref={section4Ref} data-section="section4" className="section4">
+      {/* <div ref={section4Ref} data-section="section4" className="section4">
         <div className="">
           <div className="faq-2">
             <div className="faq-main-content-2">
-              {/* <EventFaq /> */}
+               <EventFaq /> 
               <BasicAccordion />
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
