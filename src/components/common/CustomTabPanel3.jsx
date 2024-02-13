@@ -212,6 +212,7 @@ const App = ({ sevas, setTriggerRefresh }) => {
     // console.log(seva, "seva choose")
   };
   const handleClose = () => {
+    console.log('close');
     setOpenModel(false);
   }
 
@@ -219,7 +220,7 @@ const App = ({ sevas, setTriggerRefresh }) => {
 
   const handleButtonClick = (seva) => {
     if (isMobile) {
-      handleOpenModal();
+      handleOpenModal(seva);
     } else {
       handleBookSeva(seva);
     }

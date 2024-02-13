@@ -49,6 +49,7 @@ export default function MultipleSelectPlaceholder({ onPriceChange, seva,  handle
   // console.log(productDetails)
   const navigate = useNavigate()
   const theme = useTheme()
+  const modalRef = React.useRef()
   let defaultitem = seva.seva_prices.find(option => option.is_default)
 
   if (defaultitem === undefined) {
@@ -94,9 +95,9 @@ export default function MultipleSelectPlaceholder({ onPriceChange, seva,  handle
     };
   }, []);
  
- const handleClick = (newPrice, )=> {
+ const handleClick = (newPrice ,id)=> {
   setSelectedPrice(newPrice)
-
+   console.log(id, "price")
   const selectedItem = seva.seva_prices.find((item) => item.selling_price === newPrice)
 
   const newSelectedPriceId = selectedItem ? selectedItem.id : null
@@ -107,7 +108,6 @@ export default function MultipleSelectPlaceholder({ onPriceChange, seva,  handle
   setSelectedPriceTitle(selectedItem ? selectedItem.title : '')
   onPriceChange(selectedItem, seva.id)
   
- 
 
    if (token) {
     navigate(`/checkout/${seva.slug ? seva.slug : seva.id}/seva/${newSelectedPriceId}`);
@@ -120,6 +120,13 @@ export default function MultipleSelectPlaceholder({ onPriceChange, seva,  handle
 
  }
 
+
+const handleBackdropClick = (event) => {
+  event.stopPropagation()
+}
+
+
+
   return (
     <> {isMobile ? (
       // Modal for mobile
@@ -129,6 +136,9 @@ export default function MultipleSelectPlaceholder({ onPriceChange, seva,  handle
         aria-labelledby="mobile-modal"
         aria-describedby="mobile-modal-description"
         closeAfterTransition={false}
+        BackdropProps = {{
+          onClick : handleBackdropClick
+        }}
       >
       
 <Box sx={{ ...style, overflowY: 'auto'}} >
@@ -142,7 +152,9 @@ export default function MultipleSelectPlaceholder({ onPriceChange, seva,  handle
   <label className="choose-seva-margin" style={{marginBottom:"8px"}}>
     Choose a Seva
   </label></span>
+  
   {seva.seva_prices
+ 
     .filter(item => item.is_active)
     .map((item) => (
       <MenuItem
@@ -157,7 +169,7 @@ export default function MultipleSelectPlaceholder({ onPriceChange, seva,  handle
         borderRadius:'8px',
         marginBottom:'10px'
       }}
-      onClick={() => handleClick( item.selling_price)}
+      onClick={() => handleClick( item.selling_price,item.id)}
     >
       <div style={{flex:"1", whiteSpace:'pre-wrap' }} >
         <div style={{fontWeight:"Bold",color:'#333'}}>{item.title}</div>
