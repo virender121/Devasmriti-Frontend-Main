@@ -51,7 +51,7 @@ const App = ({ sevas, setTriggerRefresh }) => {
   // console.log(eventFaq)
 
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [openModel, setOpenModel] = useState(false);
+  const [openModel, setOpenModel] = useState(null);
   const [selectedPriceList, setSelectedPriceList] = useState([]);
 
   console.log(selectedPriceList);
@@ -206,9 +206,9 @@ const App = ({ sevas, setTriggerRefresh }) => {
  
 
 
-  const handleOpenModal = () => {
-    setOpenModel(true)
-    console.log("Open Modal");
+  const handleOpenModal = (seva) => {
+    setOpenModel(seva.id)
+    console.log("Open Modal",seva.id);
     // console.log(seva, "seva choose")
   };
   const handleClose = () => {
@@ -219,12 +219,20 @@ const App = ({ sevas, setTriggerRefresh }) => {
   const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
   const handleButtonClick = (seva) => {
+    const sevaPrices = seva.seva_prices;
+    
     if (isMobile) {
-      handleOpenModal(seva);
+      if (!sevaPrices || sevaPrices.length <= 1) {
+        handleBookSeva(seva);
+        
+      } else {
+        handleOpenModal(seva);
+      }
     } else {
       handleBookSeva(seva);
     }
   };
+  
 
   // Render the handleredirect result wherever it makes sense in your component
   // For example, in the render method or in the JSX where you want to display it
@@ -329,7 +337,7 @@ const App = ({ sevas, setTriggerRefresh }) => {
                                 <MultipleSelectPlaceholder2
                                onPriceChange={handlePriceChange}
                                seva={seva}
-                              
+                              openModel={openModel}
                                handleClose={handleClose}
                                setSevaForDialog={setSevaForDialog}
                                openDialog={openDialog}

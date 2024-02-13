@@ -45,11 +45,12 @@ function getStyles(name, selectedPrice, theme) {
   }
 }
 
-export default function MultipleSelectPlaceholder({ onPriceChange, seva,  handleClose , setSevaForDialog,openDialog}) {
+export default function MultipleSelectPlaceholder({ onPriceChange, seva,  handleClose , setSevaForDialog,openDialog
+,openModel}) {
   // console.log(productDetails)
   const navigate = useNavigate()
   const theme = useTheme()
-  const modalRef = React.useRef()
+ 
   let defaultitem = seva.seva_prices.find(option => option.is_default)
 
   if (defaultitem === undefined) {
@@ -57,7 +58,7 @@ export default function MultipleSelectPlaceholder({ onPriceChange, seva,  handle
     defaultitem = seva.seva_prices[0]
   }
   console.log(seva)
-
+  
   const token = localStorage.getItem("token");
   const [selectedPrice, setSelectedPrice] = useState(defaultitem.selling_price)
  
@@ -115,7 +116,7 @@ export default function MultipleSelectPlaceholder({ onPriceChange, seva,  handle
     console.log(seva)
    setSevaForDialog(seva);
      openDialog();
-
+    handleClose();
    }
 
  }
@@ -131,8 +132,8 @@ const handleBackdropClick = (event) => {
     <> {isMobile ? (
       // Modal for mobile
       <Modal
-        open={isMobile} 
-        onClose={() => setIsMobile(false)}
+        open={openModel === seva.id} 
+        onClose={() => setIsMobile(null)}
         aria-labelledby="mobile-modal"
         aria-describedby="mobile-modal-description"
         closeAfterTransition={false}
@@ -169,7 +170,7 @@ const handleBackdropClick = (event) => {
         borderRadius:'8px',
         marginBottom:'10px'
       }}
-      onClick={() => handleClick( item.selling_price,item.id)}
+      onClick={() => handleClick( item.selling_price)}
     >
       <div style={{flex:"1", whiteSpace:'pre-wrap' }} >
         <div style={{fontWeight:"Bold",color:'#333'}}>{item.title}</div>
