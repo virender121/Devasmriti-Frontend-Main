@@ -2,13 +2,14 @@ import firebase from "firebase"
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDv-FqVuLnkmBrB6frI_hg1cRB66gwrwqc",
-  authDomain: "devasmriti-daa4b.firebaseapp.com",
-  projectId: "devasmriti-daa4b",
-  storageBucket: "devasmriti-daa4b.appspot.com",
-  messagingSenderId: "282406795533",
-  appId: "1:282406795533:web:017f3f7e8416e289f55844"
-}
+  apiKey: "AIzaSyDOn7GJg4y38i8LMM9mH8vM4zW0l_8MuvM",
+  authDomain: "devasmriti-93ff2.firebaseapp.com",
+  projectId: "devasmriti-93ff2",
+  storageBucket: "devasmriti-93ff2.appspot.com",
+  messagingSenderId: "41441735245",
+  appId: "1:41441735245:web:2de786c9f951cedadc6204",
+  measurementId: "G-KFN6JL5FDH"
+};
 
 firebase.initializeApp(firebaseConfig)
 

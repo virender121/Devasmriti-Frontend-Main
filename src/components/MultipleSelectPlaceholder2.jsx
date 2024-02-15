@@ -12,7 +12,11 @@ import { useCart } from '../pages/CartContext'
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import { useAuth } from '../utils/Auth'
-import { Diversity1 } from '@mui/icons-material'
+import { Diversity1 } from '@mui/icons-material';
+import { MdVideoCameraBack } from "react-icons/md";
+import { PiBowlFoodFill } from "react-icons/pi";
+import { FaRegHeart } from "react-icons/fa";
+import { SlActionRedo } from "react-icons/sl";
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
 const MenuProps = {
@@ -29,12 +33,13 @@ const style = {
   bottom: '0',
   left: '50%',
   transform: 'translate(-50%, 0)',
-  bgcolor: 'background.paper',
+  bgcolor: '#fef9f3',
   boxShadow: 24,
   p: 4,
-  height:"380px",
+  height:"550px",
   width:"400px",
   borderRadius: '10px',
+  paddingTop:"0px"
 };
 function getStyles(name, selectedPrice, theme) {
   return {
@@ -65,6 +70,7 @@ export default function MultipleSelectPlaceholder({ onPriceChange, seva,  handle
   const { selectedPriceId, setSelectedPriceId } = useCart()
   const [selectedPriceTitle, setSelectedPriceTitle] = useState(defaultitem.title)
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
   // const [selectedPriceList, setSelectedPriceList] = useState([]);
   console.log(selectedPrice)
  console.log(selectedPriceId)
@@ -131,6 +137,17 @@ const handleBackdropClick = (event) => {
   return (
     <> {isMobile ? (
       // Modal for mobile
+      
+      <div style={{ position: 'relative' }}>
+      {/* {openModel === seva.id && ( 
+         <button
+          className="modal-button"
+          onClick={handleClose}
+          aria-label="Close"
+        >
+          ❌
+        </button> 
+      )} */}
       <Modal
         open={openModel === seva.id} 
         onClose={() => setIsMobile(null)}
@@ -141,18 +158,13 @@ const handleBackdropClick = (event) => {
           onClick : handleBackdropClick
         }}
       >
-      
+     
 <Box sx={{ ...style, overflowY: 'auto'}} >
-<span style={{display:"flex",flexDirection:"row",justifyContent:"center"}}><button
-      style={{ position: 'absolute', top: '10px', left: '10px', zIndex: '999px' ,background: "none",border:"none", color:"orange",fontSize:"20px" }}
-      onClick={handleClose}
-      aria-label="Close"
-    >
-      X
-    </button>
-  <label className="choose-seva-margin" style={{marginBottom:"8px"}}>
-    Choose a Seva
-  </label></span>
+
+<span  className="title-pooja" style={{display:"flex",flexDirection:"row",justifyContent:"space-between",marginBottom:"9px",padding:"10px",backgroundColor:"#fff"}}>
+  <h4 className="choose-seva-name" >
+ {seva.title}
+  </h4><div style={{ display:"flex",flexDirection:"row",justifyContent:"space-between"}}><span style={{marginRight:"7px",width:"30px",height:"30px"}}><FaRegHeart style={{width:"20px",height:"20px"}}/></span><span><SlActionRedo onClick={handleClose} aria-label="Close" style={{width:"20px",height:"20px"}}/></span></div></span>
   
   {seva.seva_prices
  
@@ -166,17 +178,19 @@ const handleBackdropClick = (event) => {
         justifyContent: "space-between",
         alignItems: "center",
         padding: "10px",
-        border: '1px solid #e2dfdf',
+        border: "1px solid #e2dfdf",
         borderRadius:'8px',
-        marginBottom:'10px'
-      }}
+        marginBottom:'10px',
+       backgroundColor:"#fff"
+       
+      }} 
       onClick={() => handleClick( item.selling_price)}
     >
       <div style={{flex:"1", whiteSpace:'pre-wrap' }} >
         <div style={{fontWeight:"Bold",color:'#333'}}>{item.title}</div>
-        <p href="" style={{margin:'0'}}>Watch the pooja on live stream</p>
+        <p href="" style={{margin:'0'}}><MdVideoCameraBack /> live stream</p>
         <span>
-         {item.is_prasadam_available ? ("Prashad is also available after pooja") :("Prashad is not available")
+        <PiBowlFoodFill /> {item.is_prasadam_available ? ("Prashad is also available after pooja") :("Prashad is not available")
             }</span>
       </div>
       <div>
@@ -186,9 +200,13 @@ const handleBackdropClick = (event) => {
     </MenuItem>
     
     ))}
-   
+    {seva.seva_prices.length >= 4 ? null : <div><h4 className="welness_head">|| सर्वे जन सुखिनो भवन्थु ||</h4></div>}
+
+
 </Box>
       </Modal>
+      
+      </div>
     ) : (
       <FormControl sx={{ m: 1, width: '100%', mt: 3,}} >
         <Select
