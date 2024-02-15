@@ -139,14 +139,10 @@ const handleBackdropClick = (event) => {
       // Modal for mobile
       
       <div style={{ position: 'relative' }}>
-      {/* {openModel === seva.id && ( 
-         <button
-          className="modal-button"
-          onClick={handleClose}
-          aria-label="Close"
-        >
-          ❌
-        </button> 
+      {/* {openModel  && ( 
+        <div className="close-button-wrapper">
+      
+      </div>
       )} */}
       <Modal
         open={openModel === seva.id} 
@@ -161,13 +157,22 @@ const handleBackdropClick = (event) => {
      
 <Box sx={{ ...style, overflowY: 'auto'}} >
 
-<span  className="title-pooja" style={{display:"flex",flexDirection:"row",justifyContent:"space-between",marginBottom:"9px",padding:"10px",backgroundColor:"#fff"}}>
+<span  className="title-pooja" style={{display:"flex",flexDirection:"row",justifyContent:"center",alignItems:"center", marginBottom:"9px",padding:"10px",backgroundColor:"#fff"}}>
   <h4 className="choose-seva-name" >
  {seva.title}
-  </h4><div style={{ display:"flex",flexDirection:"row",justifyContent:"space-between"}}><span style={{marginRight:"7px",width:"30px",height:"30px"}}><FaRegHeart style={{width:"20px",height:"20px"}}/></span><span><SlActionRedo onClick={handleClose} aria-label="Close" style={{width:"20px",height:"20px"}}/></span></div></span>
+  </h4>
+  {/* <div style={{ display:"flex",flexDirection:"row",justifyContent:"space-between"}}><span style={{marginRight:"7px",width:"30px",height:"30px"}}><FaRegHeart style={{width:"20px",height:"20px"}}/></span><span><SlActionRedo onClick={handleClose} aria-label="Close" style={{width:"20px",height:"20px"}}/></span></div> */}
+  <button
+          className="modal-button"
+          onClick={handleClose}
+          aria-label="Close"
+        >
+           ✖
+        </button>
+  </span>
   
   {seva.seva_prices
- 
+
     .filter(item => item.is_active)
     .map((item) => (
       <MenuItem
@@ -188,7 +193,7 @@ const handleBackdropClick = (event) => {
     >
       <div style={{flex:"1", whiteSpace:'pre-wrap' }} >
         <div style={{fontWeight:"Bold",color:'#333'}}>{item.title}</div>
-        <p href="" style={{margin:'0'}}><MdVideoCameraBack /> live stream</p>
+        {/* <p href="" style={{margin:'0'}}><MdVideoCameraBack /> live stream</p> */}
         <span>
         <PiBowlFoodFill /> {item.is_prasadam_available ? ("Prashad is also available after pooja") :("Prashad is not available")
             }</span>
@@ -200,7 +205,7 @@ const handleBackdropClick = (event) => {
     </MenuItem>
     
     ))}
-    {seva.seva_prices.length >= 4 ? null : <div><h4 className="welness_head">|| सर्वे जन सुखिनो भवन्थु ||</h4></div>}
+    {seva.seva_prices.length >= 4 ? null : <div className="welness_head_div"><h4 className="welness_head">|| सर्वे जन सुखिनो भवन्थु ||</h4></div>}
 
 
 </Box>
