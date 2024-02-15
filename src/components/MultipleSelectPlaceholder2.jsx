@@ -13,7 +13,8 @@ import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import { useAuth } from '../utils/Auth'
 import { Diversity1 } from '@mui/icons-material';
-import prashadPic from "../images/black-line-art-laddu-on-plate-in-flat-style-vector.jpg"
+import prashadPic from "../images/black-line-art-laddu-on-plate-in-flat-style-vector.jpg";
+import { RadioButton } from "primereact/radiobutton";
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
 const MenuProps = {
@@ -192,7 +193,8 @@ const handleBackdropClick = (event) => {
         <div style={{fontWeight:"Bold",color:'#333'}}>{item.title}</div>
         {/* <p href="" style={{margin:'0'}}><MdVideoCameraBack /> live stream</p> */}
         <span >
-       <img src={prashadPic} alt='ladu_image' style={{width:"25px",height:"25px"}}/> {item.is_prasadam_available ? ("Prashad available") :("Prashad unavailable")
+        <RadioButton inputId={item.id} name="" value={item.selling_price} checked={defaultitem.id === item.id} onChange= {()=>handleClick( item.selling_price,item.id)}/>
+                             <img src={prashadPic} alt='ladu_image' style={{width:"25px",height:"25px",marginLeft:"7px"}}/> {item.is_prasadam_available ? ("Prashad available") :("Prashad unavailable")
             }</span>
       </div>
       <div>

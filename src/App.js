@@ -25,12 +25,13 @@ import BookingSuccessful from "./pages/BookingSuccessful"
 import PaymentFailed from "./pages/PaymentFailed"
 import { useState } from 'react';
 import ProtectedRoute from './ProtectedRoute';
-
+import { PrimeReactProvider } from 'primereact/api';
 function App() {
   const [triggerRefresh1, setTriggerRefresh] = useState(0)
 
   return (
     <>
+    <PrimeReactProvider>
       <CartProvider>
         <Routes>
           <Route path="/" element={<Home triggerRefresh1={triggerRefresh1} setTriggerRefresh={setTriggerRefresh} />} />
@@ -62,6 +63,7 @@ function App() {
           <Route path="/payment/:bookingid/Success" element={<BookingSuccessful />} />
         </Routes>
       </CartProvider>
+      </PrimeReactProvider>
     </>
   );
 }
