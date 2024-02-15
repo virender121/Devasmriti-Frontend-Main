@@ -14,7 +14,7 @@ import Box from '@mui/material/Box';
 import { useAuth } from '../utils/Auth'
 import { Diversity1 } from '@mui/icons-material';
 import prashadPic from "../images/black-line-art-laddu-on-plate-in-flat-style-vector.jpg";
-import { RadioButton } from "primereact/radiobutton";
+import { Radio } from '@mui/material';
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
 const MenuProps = {
@@ -137,11 +137,6 @@ const handleBackdropClick = (event) => {
       // Modal for mobile
       
       <div style={{ position: 'relative' }}>
-      {/* {openModel  && ( 
-        <div className="close-button-wrapper">
-      
-      </div>
-      )} */}
       <Modal
         open={openModel === seva.id} 
         onClose={() => setIsMobile(null)}
@@ -152,22 +147,19 @@ const handleBackdropClick = (event) => {
           onClick : handleBackdropClick
         }}
       >
-     
-<Box sx={{ ...style, overflowY: 'auto'}} >
-
-<span  className="title-pooja" style={{display:"flex",flexDirection:"row",justifyContent:"center",alignItems:"center", marginBottom:"9px",padding:"10px",backgroundColor:"#fff"}}>
-  <h4 className="choose-seva-name" >
- {seva.title}
-  </h4>
-  {/* <div style={{ display:"flex",flexDirection:"row",justifyContent:"space-between"}}><span style={{marginRight:"7px",width:"30px",height:"30px"}}><FaRegHeart style={{width:"20px",height:"20px"}}/></span><span><SlActionRedo onClick={handleClose} aria-label="Close" style={{width:"20px",height:"20px"}}/></span></div> */}
-  <button
+      <Box sx={{ ...style, overflowY: 'auto'}} >
+        <span  className="title-pooja" style={{display:"flex",flexDirection:"row",justifyContent:"center",alignItems:"center", marginBottom:"9px",padding:"10px",backgroundColor:"#fff"}}>
+        <h4 className="choose-seva-name" >
+          {seva.title}
+        </h4>
+        <button
           className="modal-button"
           onClick={handleClose}
           aria-label="Close"
         >
            ✖
         </button>
-  </span>
+         </span>
   
   {seva.seva_prices
 
@@ -190,14 +182,24 @@ const handleBackdropClick = (event) => {
       onClick={() => handleClick( item.selling_price)}
     >
       <div style={{flex:"1", whiteSpace:'pre-wrap' }} >
-        <div style={{fontWeight:"Bold",color:'#333'}}>{item.title}</div>
+             
+     
+        <div style={{fontWeight:"Bold",color:'#333',marginLeft:"22px"}}>{item.title}</div>
         {/* <p href="" style={{margin:'0'}}><MdVideoCameraBack /> live stream</p> */}
+        <Radio
+  checked={defaultitem.id === item.id}
+  onChange={() => handleClick(item.selling_price)}
+  inputProps={{ 'aria-label': 'item-radio' }}
+  style={{position:'absolute',left:"-4px",top: seva.id=== 28 ? "13px" : "28px"}}
+/>
+        
+      
         <span >
-        <RadioButton inputId={item.id} name="" value={item.selling_price} checked={defaultitem.id === item.id} onChange= {()=>handleClick( item.selling_price,item.id)}/>
-                             <img src={prashadPic} alt='ladu_image' style={{width:"25px",height:"25px",marginLeft:"7px"}}/> {item.is_prasadam_available ? ("Prashad available") :("Prashad unavailable")
+       
+               <img src={prashadPic} alt='ladu_image' style={{width:"25px",height:"25px",marginLeft:"18px"}}/> {item.is_prasadam_available ? ("Prashad available") :("Prashad unavailable")
             }</span>
       </div>
-      <div>
+      <div style={{fontWeight:"bold"}}>
         {`Rs.${item.selling_price}`}
       </div>
       
