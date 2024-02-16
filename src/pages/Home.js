@@ -122,22 +122,22 @@ function Home({ triggerRefresh1, setTriggerRefresh }) {
                         </div>
                     </Container>
                     <div className="om-left">
-                        <img src={om} />
+                        <img alt="cloud" src={om} />
                     </div>
                     <div className="cloud-left">
-                        <img src={cloud} />
+                        <img alt="cloud" src={cloud} />
                     </div>
                     <div className="cloud1-left">
-                        <img src={smcloud} />
+                        <img alt="cloud" src={smcloud} />
                     </div>
                     <div className="om-right">
-                        <img src={om2} />
+                        <img alt="cloud" src={om2} />
                     </div>
                     <div className="cloud1-right">
-                        <img src={cloud} />
+                        <img alt="cloud" src={cloud} />
                     </div>
                     <div className="cloud-right">
-                        <img src={cloud} />
+                        <img alt="cloud" src={cloud} />
                     </div>
                 </div>
                 <div className="discover-more" ref={sevasSectionRef}>

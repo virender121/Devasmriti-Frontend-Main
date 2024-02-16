@@ -14,7 +14,7 @@ import Box from '@mui/material/Box';
 import { useAuth } from '../utils/Auth'
 import { Diversity1 } from '@mui/icons-material';
 import prashadPic from "../images/black-line-art-laddu-on-plate-in-flat-style-vector.jpg";
-import { Radio } from '@mui/material';
+import { Button, Radio } from '@mui/material';
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
 const MenuProps = {
@@ -37,7 +37,8 @@ const style = {
   height:"550px",
   width:"400px",
   borderRadius: '10px',
-  paddingTop:"0px"
+  paddingTop:"0px",
+  overflow:'visibile'
 };
 function getStyles(name, selectedPrice, theme) {
   return {
@@ -64,7 +65,7 @@ export default function MultipleSelectPlaceholder({ onPriceChange, seva,  handle
   
   const token = localStorage.getItem("token");
   const [selectedPrice, setSelectedPrice] = useState(defaultitem.selling_price)
- 
+//  const [selectedItem, setSelectedItem] = useState(defaultitem.id)
   const { selectedPriceId, setSelectedPriceId } = useCart()
   const [selectedPriceTitle, setSelectedPriceTitle] = useState(defaultitem.title)
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -100,9 +101,9 @@ export default function MultipleSelectPlaceholder({ onPriceChange, seva,  handle
     };
   }, []);
  
- const handleClick = (newPrice ,id)=> {
+ const handleClick = (newPrice )=> {
   setSelectedPrice(newPrice)
-   console.log(id, "price")
+   
   const selectedItem = seva.seva_prices.find((item) => item.selling_price === newPrice)
 
   const newSelectedPriceId = selectedItem ? selectedItem.id : null
@@ -112,16 +113,6 @@ export default function MultipleSelectPlaceholder({ onPriceChange, seva,  handle
 
   setSelectedPriceTitle(selectedItem ? selectedItem.title : '')
   onPriceChange(selectedItem, seva.id)
-  
-
-   if (token) {
-    navigate(`/checkout/${seva.slug ? seva.slug : seva.id}/seva/${newSelectedPriceId}`);
-  } else {
-    console.log(seva)
-   setSevaForDialog(seva);
-     openDialog();
-    handleClose();
-   }
 
  }
 
@@ -130,6 +121,16 @@ const handleBackdropClick = (event) => {
   event.stopPropagation()
 }
 
+const handleNavigate = (selectedPriceId) => {
+  if (token) {
+    navigate(`/checkout/${seva.slug ? seva.slug : seva.id}/seva/${selectedPriceId}`);
+  } else {
+    console.log(seva)
+   setSevaForDialog(seva);
+     openDialog();
+    handleClose();
+   }
+}
 
 
   return (
@@ -148,7 +149,9 @@ const handleBackdropClick = (event) => {
         }}
       >
       <Box sx={{ ...style, overflowY: 'auto'}} >
+      
         <span  className="title-pooja" style={{display:"flex",flexDirection:"row",justifyContent:"center",alignItems:"center", marginBottom:"9px",padding:"10px",backgroundColor:"#fff"}}>
+
         <h4 className="choose-seva-name" >
           {seva.title}
         </h4>
@@ -179,7 +182,7 @@ const handleBackdropClick = (event) => {
        backgroundColor:"#fff"
        
       }} 
-      onClick={() => handleClick( item.selling_price)}
+      onClick={()=> handleClick(item.selling_price)}
     >
       <div style={{flex:"1", whiteSpace:'pre-wrap' }} >
              
@@ -187,8 +190,7 @@ const handleBackdropClick = (event) => {
         <div style={{fontWeight:"Bold",color:'#333',marginLeft:"22px"}}>{item.title}</div>
         {/* <p href="" style={{margin:'0'}}><MdVideoCameraBack /> live stream</p> */}
         <Radio
-  checked={defaultitem.id === item.id}
-  onChange={() => handleClick(item.selling_price)}
+  checked={selectedPrice === item.selling_price}
   inputProps={{ 'aria-label': 'item-radio' }}
   style={{position:'absolute',left:"-4px",top: seva.id=== 28 ? "13px" : "28px"}}
 />
@@ -208,7 +210,8 @@ const handleBackdropClick = (event) => {
     ))}
     {seva.seva_prices.length >= 4 ? null : <div className="welness_head_div"><h4 className="welness_head">|| सर्वे जन सुखिनो भवन्थु ||</h4></div>}
 
-
+    <Button variant="contained" disableRipple disableElevation className="app-btn app-btn-primary "
+    style={{position: seva.id=== 28 ? "sticky": "absolute",bottom:seva.id=== 28 ? "1px": "18px",left:"23%", zIndex:seva.id=== 28 ? "9999" : "0",fontWeight:"bold"}} onClick={()=>handleNavigate(selectedPriceId)}>Continue with ₹{selectedPrice}</Button>
 </Box>
       </Modal>
       
