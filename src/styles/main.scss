@@ -3877,6 +3877,13 @@ input[type="radio"] + label {
   margin-top: 40px;
 }
 
+.seva-title{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 1px solid gray;
+  border-radius: 19px;
+}
 
 .welcome-back .mobile-number label {
   color: #7e91ae;
