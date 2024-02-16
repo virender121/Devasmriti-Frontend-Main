@@ -91,8 +91,8 @@ export default () => {
                 
                 </p> */}
               {/* </div> */}
-              <div className="sevacard-img" style={{ marginTop: "20px" }}>
-                <img src={`${item.feature_image_id.domain}${item.feature_image_id.url}`} alt="loading" />
+              <div className="sevacard-img">
+                <img src={`${item.banner_image_id.domain}${item.banner_image_id.url}`} alt="loading" />
               </div>
               <div className="seva-title" style={{ height: "120px" }}>
                 <h4 style={{ color: "black", padding: "10px 20px" }}>{item.title.length > 60 ? item.title.slice(0, 60) + "..." : item.title}</h4>

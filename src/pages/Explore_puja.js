@@ -340,10 +340,7 @@ function Explore_puja() {
                                                         </p>
                                                     </div>
 
-                                                    <div className="seva-title" style={{ height: "120px" }}>
-                                                        <h4 style={{ color: "black" }}>{seva.title.length > 65 ? seva.title.slice(0, 65) + "..." : seva.title}</h4>
-                                                        <p style={{ color: "black", padding: "0 20px" }}><b style={{ color: "#212121" }}>Event</b>: {seva.event}</p>
-                                                    </div>
+                                                   
 
                                                     {/* <div className="readmore-desc" >
                                                         <p className="read-more-link description-scroll"style={{width:"335px",height:"150px",margin:"5px"}} dangerouslySetInnerHTML={{ __html : seva.description}}></p>
@@ -360,6 +357,10 @@ function Explore_puja() {
                                                                 <p>{new Date(seva.start_date).toDateString()}</p>
                                                             </div>
                                                         </div> */}
+                                                    </div>
+                                                    <div className="seva-title" style={{ height: "120px" }}>
+                                                        <h4 style={{ color: "black" }}>{seva.title.length > 65 ? seva.title.slice(0, 65) + "..." : seva.title}</h4>
+                                                        <p style={{ color: "black", padding: "0 20px" }}><b style={{ color: "#212121" }}>Event</b>: {seva.event}</p>
                                                     </div>
                                                     <div className="book-seva" >
                                                         <Link style={{ width: "100%", padding: "0 10px" }}
