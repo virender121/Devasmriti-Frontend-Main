@@ -211,7 +211,7 @@ const handleNavigate = (selectedPriceId) => {
     {seva.seva_prices.length >= 4 ? null : <div className="welness_head_div"><h4 className="welness_head">|| सर्वे जन सुखिनो भवन्थु ||</h4></div>}
 
     <Button variant="contained" disableRipple disableElevation className="app-btn app-btn-primary "
-    style={{position: seva.id=== 28 ? "sticky": "absolute",bottom:seva.id=== 28 ? "1px": "18px",left:"23%", zIndex:seva.id=== 28 ? "9999" : "0",fontWeight:"bold"}} onClick={()=>handleNavigate(selectedPriceId)}>Continue with ₹{selectedPrice}</Button>
+    style={{position: seva.id=== 28 ? "sticky": "absolute",bottom:seva.id=== 28 ? "1px": "18px",left:seva.id === 28 ? "5%" : "10%", zIndex:seva.id=== 28 ? "9999" : "0",fontWeight:"bold",width:seva.id === 28 ? "75%" : '65%'}} onClick={()=>handleNavigate(selectedPriceId)}>Continue with ₹{selectedPrice}</Button>
 </Box>
       </Modal>
       

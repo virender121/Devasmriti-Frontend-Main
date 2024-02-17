@@ -94,21 +94,24 @@ export default () => {
               <div className="sevacard-img">
                 <img src={`${item.banner_image_id.domain}${item.banner_image_id.url}`} alt="loading" />
               </div>
-              <div className="seva-title" style={{ height: "120px" }}>
+              <div className="seva-title" style={{position:"absolute",top:"222px",backgroundColor:"#fff"}}>
                 <h4 style={{ color: "black", padding: "10px 20px" }}>{item.title.length > 60 ? item.title.slice(0, 60) + "..." : item.title}</h4>
-                <p style={{ color: "black", padding: "0 15px" }}><span style={{ color: "#7e91ae" }}>Event</span>: {item.event}</p>
+                <p style={{ color: "black", padding: "0 20px" }}><span style={{ color: "#7e91ae" }}>Event</span>: {item.event}</p>
               </div>
               <div className="book-seva">
                 <Link style={{ width: "100%", padding: "0 20px" }} to={`/sevas/${item.slug ? item.slug : item.id}`}>
                   <Button disableRipple disableElevation
-                    className="book-seva-btn" style={{ marginTop: "15px", width: "100%" }}>
+                    className="book-seva-btn" style={{ marginTop: "105px", width: "100%" }}>
                     {item.is_expaired ? 'View Details' : 'Book Now'}
                   </Button>
 
                 </Link>
               </div>
-            </div>
-          </div>
+              </div>
+              </div>
+            
+          
+          
         </SwiperSlide>
       ))}
     </Swiper>
