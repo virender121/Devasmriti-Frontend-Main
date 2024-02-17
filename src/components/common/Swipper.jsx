@@ -94,7 +94,7 @@ export default () => {
               <div className="sevacard-img">
                 <img src={`${item.banner_image_id.domain}${item.banner_image_id.url}`} alt="loading" />
               </div>
-              <div className="seva-title" style={{position:"absolute",top:"222px",backgroundColor:"#fff"}}>
+              <div className="seva-title" style={{position:"absolute",top:"220px",backgroundColor:"#fff"}}>
                 <h4 style={{ color: "black", padding: "10px 20px" }}>{item.title.length > 60 ? item.title.slice(0, 60) + "..." : item.title}</h4>
                 <p style={{ color: "black", padding: "0 20px" }}><span style={{ color: "#7e91ae" }}>Event</span>: {item.event}</p>
               </div>
